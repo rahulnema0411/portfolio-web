@@ -16,10 +16,10 @@ function App() {
             mobile and I build games as well.
           </p>
         </div>
-        <ol className="hidden md:block flex-col justify-items-start items-start list-disc list-inside space-y-1">
-          <li className="font-bold">About</li>
-          <li>Experience</li>
-          <li>Projects</li>
+        <ol className="hidden md:block list-disc list-inside text-left space-y-1">
+          <li className="opacity-70">About</li>
+          <li className="opacity-70">Experience</li>
+          <li className="opacity-70">Projects</li>
         </ol>
 
         <ContactSection />
