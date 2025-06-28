@@ -2,9 +2,9 @@ import React from "react";
 
 const experiences = [
   {
-    company: "PAYCRUNCH",
+    company: "PayCrunch",
     location: "Bengaluru",
-    title: "Front End Developer",
+    title: "FRONT END DEVELOPER",
     period: "March 2024 - Present",
     highlights: [
       "Managed app releases, including build preparation, testing coordination, and submission to the App Store and Google Play.",
@@ -13,9 +13,9 @@ const experiences = [
     ],
   },
   {
-    company: "SKILLWIN",
+    company: "Skillwin",
     location: "Noida",
-    title: "Member of Technical Staff",
+    title: "MEMBER OF TECHNICAL STAFF",
     period: "Dec 2022 - Feb 2024",
     highlights: [
       "Implemented multi-table support in Octro Poker, enabling users to play on up to 3 tables concurrently.",
@@ -24,9 +24,9 @@ const experiences = [
     ],
   },
   {
-    company: "HITWICKET",
+    company: "Hitwicket",
     location: "Hyderabad",
-    title: "Software Engineer",
+    title: "GAME DEVELOPER",
     period: "Jun 2021 - Nov 2022",
     highlights: [
       "Built and launched online PvP mode for Hitwicket Superstars, enhancing competitiveness.",
@@ -42,12 +42,12 @@ const Experience: React.FC = () => (
     <h2 className="text-2xl font-bold mb-8">Work Experience</h2>
     {experiences.map((exp, idx) => (
       <div key={idx} className="mb-8">
-        <h3 className="text-xl font-semibold">
-          {exp.company}, {exp.location} —{" "}
-          <span className="font-normal">{exp.title}</span>
+        <span className="font-black">{exp.title}</span>
+        <h3 className="font-black">
+          {exp.company}, {exp.location}
         </h3>
-        <p className="italic my-1">{exp.period}</p>
-        <ul className="list-disc list-inside space-y-1">
+        <p className="text-xs font-semibold my-1 opacity-50">{exp.period}</p>
+        <ul className="list-disc list-inside space-y-1 text-sm opacity-90 py-2">
           {exp.highlights.map((point, i) => (
             <li key={i}>{point}</li>
           ))}

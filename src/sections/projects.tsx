@@ -5,20 +5,20 @@ const projects = [
     title: "Factura (Web Application)",
     tech: ["NextJS", "NestJS", "PostgreSQL"],
     description: [
-      "Built a full-stack CRM for the packaging industry, utilizing NextJS and NestJS.",
-      "Developed key modules including Enquiry, Orders, and Production, with features such as a Quote Calculator and a sharable enquiry form.",
-      "Implemented and managed CI/CD pipeline to automate build, test, and deployment processes.",
-      "Integrated WhatsApp Cloud API and Amazon SES for automated customer notifications on enquiry, order, and production status.",
+      "Architected and developed a full-stack, role-based CRM platform for the packaging industry using Next.js (App Router) for the frontend and NestJS (modular monolith architecture) for the backend.",
+      "Engineered core modules including Enquiry Management, Order Processing, and Production Tracking, featuring dynamic tools like a real-time Quote Calculator and a secure, shareable enquiry form with role-based access control.",
+      "Designed, implemented, and maintained a CI/CD pipeline leveraging GitHub Actions and Docker to automate build, testing, and multi-environment deployment workflows.",
+      "Integrated external services including the WhatsApp Cloud API for real-time customer notifications and Amazon SES for transactional email delivery, streamlining communication across enquiry, order, and production events.",
     ],
   },
   {
     title: "Chessmate.Club: Multiplayer",
     tech: ["Flutter", "NestJS", "MongoDB"],
     description: [
-      "A classic chess app for the new generation who loves chess but has less time. Quick 7 min matches with a point system.",
-      "Built with Flutter for frontend and NestJS for backend.",
-      "Play against players in real time (websockets) - ranked matches, or create a private room to play with a friend.",
-      "Compete on weekly leaderboards, collect gems, and win Amazon vouchers.",
+      "Built a cross-platform chess app in Flutter with real-time multiplayer with Socket.io for low-latency communication.",
+      "Integrated Firebase Auth with Google and Apple sign-in for secure, seamless authentication and session handling.",
+      "Applied BLoC and Repository pattern for scalable state management and real-time game state synchronization.",
+      "Integrated chess libraries (squares, square_bishop) for legal move validation, timers and player matchmaking.",
     ],
   },
   {
@@ -53,20 +53,20 @@ const projects = [
 ];
 
 const Projects: React.FC = () => (
-  <section id="projects" className="py-12 text-left">
+  <section id="projects" className="text-left">
     <h2 className="text-3xl font-bold mb-8 text-left">Projects</h2>
     <div className="space-y-10">
       {projects.map((project, idx) => (
-        <div key={idx} className="text-left">
-          <div className="flex flex-col mb-2">
-            <h3 className="text-xl font-semibold text-left">{project.title}</h3>
+        <div key={idx} className="text-left space-y-4">
+          <div className="flex flex-col">
+            <h3 className="font-black text-left">{project.title}</h3>
           </div>
-          <ul className="list-disc list-inside space-y-1 text-left mb-2">
+          <ul className="list-disc list-inside text-left text-sm space-y-2 opacity-90">
             {project.description.map((point, i) => (
               <li key={i}>{point}</li>
             ))}
           </ul>
-          <div className="flex flex-wrap gap-2 mt-2">
+          <div className="flex flex-wrap gap-2">
             {project.tech.map((tech, i) => (
               <span
                 key={i}
