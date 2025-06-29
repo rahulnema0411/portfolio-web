@@ -1,7 +1,7 @@
 import React from "react";
 
 const About: React.FC = () => (
-  <section className="flex flex-col justify-items-start items-start space-y-4 text-left text-sm py-8 opacity-80">
+  <section className="flex flex-col justify-items-start items-start space-y-4 text-left text-xs py-8 opacity-70">
     <p>
       I’m a product builder with a hacker’s heart and a designer’s eye. I love
       turning raw ideas into real, working products — fast. From building
@@ -10,11 +10,11 @@ const About: React.FC = () => (
     </p>
     <p>
       I’m comfortable across stacks:{" "}
-      <span className="font-semibold opacity-100">React</span>,{" "}
-      <span className="font-semibold opacity-100">Firebase</span>,{" "}
-      <span className="font-semibold opacity-100">Flutter</span>,{" "}
-      <span className="font-semibold opacity-100">Prisma</span>,{" "}
-      <span className="font-semibold opacity-100">Drizzle ORM</span>, and
+      <span className="font-semibold text-white">React</span>,{" "}
+      <span className="font-semibold text-white">Firebase</span>,{" "}
+      <span className="font-semibold text-white">Flutter</span>,{" "}
+      <span className="font-semibold text-white">Prisma</span>,{" "}
+      <span className="font-semibold text-white">Drizzle ORM</span>, and
       more. Whether it’s Dockerizing a Node.js server, fixing iOS build configs,
       or spinning up domains for side projects like RoastMyResume, I enjoy
       diving deep into both the technical and product sides of things.

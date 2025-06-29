@@ -54,14 +54,14 @@ const projects = [
 
 const Projects: React.FC = () => (
   <section id="projects" className="text-left">
-    <h2 className="text-3xl font-bold mb-8 text-left">Projects</h2>
+    <h2 className="text-xl font-bold mb-8 text-left">Projects</h2>
     <div className="space-y-10">
       {projects.map((project, idx) => (
         <div key={idx} className="text-left space-y-4">
           <div className="flex flex-col">
             <h3 className="font-black text-left">{project.title}</h3>
           </div>
-          <ul className="list-disc list-inside text-left text-sm space-y-2 opacity-90">
+          <ul className="list-disc list-inside text-left text-xs space-y-1 opacity-70">
             {project.description.map((point, i) => (
               <li key={i}>{point}</li>
             ))}

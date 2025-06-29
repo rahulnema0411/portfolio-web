@@ -39,15 +39,15 @@ const experiences = [
 
 const Experience: React.FC = () => (
   <section id="experience" className="text-left py-8">
-    <h2 className="text-2xl font-bold mb-8">Work Experience</h2>
+    <h2 className="text-xl font-bold mb-8">Work Experience</h2>
     {experiences.map((exp, idx) => (
       <div key={idx} className="mb-8">
         <span className="font-black">{exp.title}</span>
-        <h3 className="font-black">
+        <h3 className="font-black text-sm">
           {exp.company}, {exp.location}
         </h3>
         <p className="text-xs font-semibold my-1 opacity-50">{exp.period}</p>
-        <ul className="list-disc list-inside space-y-1 text-sm opacity-90 py-2">
+        <ul className="list-disc list-inside space-y-1 text-xs opacity-70 py-2">
           {exp.highlights.map((point, i) => (
             <li key={i}>{point}</li>
           ))}
