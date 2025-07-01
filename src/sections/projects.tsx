@@ -4,51 +4,32 @@ const projects = [
   {
     title: "Factura (Web Application)",
     tech: ["NextJS", "NestJS", "PostgreSQL"],
-    description: [
-      "Architected and developed a full-stack, role-based CRM platform for the packaging industry using Next.js (App Router) for the frontend and NestJS (modular monolith architecture) for the backend.",
-      "Engineered core modules including Enquiry Management, Order Processing, and Production Tracking, featuring dynamic tools like a real-time Quote Calculator and a secure, shareable enquiry form with role-based access control.",
-      "Designed, implemented, and maintained a CI/CD pipeline leveraging GitHub Actions and Docker to automate build, testing, and multi-environment deployment workflows.",
-      "Integrated external services including the WhatsApp Cloud API for real-time customer notifications and Amazon SES for transactional email delivery, streamlining communication across enquiry, order, and production events.",
-    ],
+    description:
+      "A scalable B2B platform built with a Next.js frontend leveraging file-based routing and image compression for optimized performance. The backend was developed using NestJS with PostgreSQL, featuring JWT-based authentication and AWS S3 integration for secure PDF and image uploads. Core modules include Enquiry, Orders, and Production management, along with a dynamic Quote Calculator and sharable enquiry forms with role-based permission controls. The system integrates with WhatsApp Cloud API and Amazon SES to enable real-time, automated customer notifications. A CI/CD pipeline ensures seamless build, test, and deployment workflows, while services are containerized using Docker and hosted on AWS EC2 within a live production environment, delivering a reliable, scalable infrastructure.",
   },
   {
     title: "Chessmate.Club: Multiplayer",
     tech: ["Flutter", "NestJS", "MongoDB"],
-    description: [
-      "Built a cross-platform chess app in Flutter with real-time multiplayer with Socket.io for low-latency communication.",
-      "Integrated Firebase Auth with Google and Apple sign-in for secure, seamless authentication and session handling.",
-      "Applied BLoC and Repository pattern for scalable state management and real-time game state synchronization.",
-      "Integrated chess libraries (squares, square_bishop) for legal move validation, timers and player matchmaking.",
-    ],
+    description:
+      "A cross-platform real-time multiplayer chess application built with Flutter, featuring low-latency communication using Socket.io. The app supports secure authentication via Firebase Auth, with integrated Google and Apple sign-in options. A scalable and maintainable architecture was implemented using the BLoC and Repository patterns for efficient state management and real-time game synchronization. For offline play, Stockfish was integrated via FFI, alongside chess libraries for legal move validation, timers, and player matchmaking. The backend services were containerized with Docker and deployed on AWS EC2, ensuring a scalable, production-ready infrastructure capable of supporting concurrent multiplayer sessions.",
   },
   {
     title: "Cudddle: A Dating App",
     tech: ["Flutter", "NodeJS", "MongoDB"],
-    description: [
-      "Ideated and developed a solution to mindless swiping by building a 5-match slot system; users strategically manage a queue of additional matches.",
-      "Incorporated an experience feature, encouraging users to go on experiential dates for memorable encounters.",
-      "Built chat system, notification systems, and other engagement tools into the app.",
-    ],
+    description:
+      "A scalable Flutter application designed with the BLoC and Repository patterns for clean, maintainable, and modular state management. The backend was built using Express and MongoDB, offering JWT-authenticated REST APIs for secure and scalable data handling. The platform features real-time chat powered by Firebase, with push notifications managed via Firebase Cloud Messaging to keep users connected. An AI-driven matchmaking assistant, powered by OpenAPI integrations (Wingman/Wingwoman helpers), enhances the matchmaking experience with intelligent recommendations. Additionally, the app includes media-rich features such as image capture, cropping, and compression for seamless profile building and an engaging user experience.",
   },
   {
     title: "Anony: Anonymous Q&A System",
     tech: ["Flutter", "Firebase", "Apple Push Notification Service"],
-    description: [
-      "Developed an anonymous Q&A system for the app, implementing unique link generation for users to share on Instagram or with friends for anonymous questions.",
-      "Ensured privacy by delivering questions directly to users.",
-      "Integrated Google login for Android (Firebase) and Apple ID login for iOS.",
-      "Implemented Apple Push Notification Service for iOS and Firebase Notification Service for Android to notify users of new questions.",
-    ],
+    description:
+      "An anonymous Q&A system built within a Flutter app, featuring unique link generation for users to share on Instagram or with friends, enabling them to receive anonymous questions. The system ensures privacy by delivering questions directly to the intended recipients. Authentication is handled via Google Sign-In (Firebase) for Android and Apple ID login for iOS. To keep users engaged, push notifications are integrated using Apple Push Notification Service for iOS and Firebase Notification Service for Android, notifying users instantly when new questions arrive.",
   },
   {
     title: "Ludo Master: Multiplayer Game",
     tech: ["Unity", "Photon Engine"],
-    description: [
-      "Created 'Ludo Master,' a game faithful to traditional Ludo rules and regulations, providing a classic Ludo experience.",
-      "Integrated the Photon Engine to enable real-time multiplayer gameplay with friends online.",
-      "Designed a user-friendly interface allowing players to choose between offline and online modes.",
-      "Implemented a lobby system with unique room IDs for online matches, allowing players to join specific rooms for interactive gameplay.",
-    ],
+    description:
+      "A multiplayer Ludo game faithful to traditional rules, built in Unity to deliver a classic and accessible Ludo experience. Photon Engine integration powers real-time multiplayer gameplay, allowing users to play with friends online. The game features a user-friendly interface with options for both offline and online modes. A lobby system with unique room IDs enables players to create and join specific rooms, making matches easy to organize and enhancing interactive multiplayer sessions.",
   },
 ];
 
@@ -62,9 +43,7 @@ const Projects: React.FC = () => (
             <h3 className="font-black text-left">{project.title}</h3>
           </div>
           <ul className="list-disc list-inside text-left text-xs space-y-1 opacity-70">
-            {project.description.map((point, i) => (
-              <li key={i}>{point}</li>
-            ))}
+            {project.description}
           </ul>
           <div className="flex flex-wrap gap-2">
             {project.tech.map((tech, i) => (

@@ -1,5 +1,5 @@
 import React from "react";
-import { Github, Mail, Linkedin } from "lucide-react";
+import { Github, Mail, Linkedin, Instagram } from "lucide-react";
 
 const contacts = [
     {
@@ -16,6 +16,11 @@ const contacts = [
         href: "https://linkedin.com/in/rahulnema0411",
         label: "LinkedIn",
         icon: <Linkedin size={18} />,
+    },
+    {
+        href: "https://www.instagram.com/rahul_nema/",
+        label: "Instagram",
+        icon: <Instagram size={18} />,
     },
 ];
 

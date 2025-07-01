@@ -7,9 +7,10 @@ const experiences = [
     title: "FRONT END DEVELOPER",
     period: "March 2024 - Present",
     highlights: [
-      "Managed app releases, including build preparation, testing coordination, and submission to the App Store and Google Play.",
-      "Re-worked the entire client app to make the codebase scalable and clean.",
-      "Developed social engagement features such as hives and spill.",
+      "Refactored the entire client application architecture for scalability and maintainability by implementing the BLoC (Business Logic Component) pattern, ensuring clear separation of concerns and streamlined state management.",
+      "Led app release management, including build configuration and successful submissions to the App Store and Google Play.",
+      "Integrated credit card payment functionality, handling secure payment flows, tokenization, and transaction validation.",
+      "Built social engagement features like Hives (community groups) and Spill (Splitwise-style shared expenses)",
     ],
   },
   {
@@ -18,9 +19,10 @@ const experiences = [
     title: "MEMBER OF TECHNICAL STAFF",
     period: "Dec 2022 - Feb 2024",
     highlights: [
-      "Implemented multi-table support in Octro Poker, enabling users to play on up to 3 tables concurrently.",
-      "Optimized game performance, reducing asset download time (~3s) and minimizing canvas updates.",
-      "Refactored the store module for scalability and developed retention features like Free Roll tournaments, daily login, and user reporting.",
+      "Implemented multi-table functionality by architecting isolated game instances within a shared runtime, enabling players to concurrently manage up to 3 active tables with independent game states, UI layers, and network sessions.",
+      "Reduced game start-up time (-4s) by strategically implementing parallel asset-bundle downloads.",
+      "Re-architected the store module using Zenject for Dependency Injection, improving scalability, runtime configurability, and code maintainability through decoupled, modular services.",
+      "Worked on retention mechanic features such as Free Roll tournaments, Daily Login, User Reporting and more.",
     ],
   },
   {
@@ -29,10 +31,11 @@ const experiences = [
     title: "GAME DEVELOPER",
     period: "Jun 2021 - Nov 2022",
     highlights: [
-      "Built and launched online PvP mode for Hitwicket Superstars, enhancing competitiveness.",
-      "Conducted 30+ A/B tests on game tutorials, using Bayesian inference to improve Day 1, 3, and 7 retention rates.",
-      "Enhanced engagement loops with features like training center, daily goals, and a beginner's quest system.",
-      "Developed LiveOps events such as Hitwicket Champions League, Alliance Quest, and Battle Arenas.",
+      "Built online PvP mode for an existing cricket game using WebSockets for real-time, low-latency multiplayer.",
+      "Applied State, Command, and Observer patterns for game state management, networked player actions, and reactive UI/analytics systems.",
+      "Ran 30+ A/B tests on tutorials and onboarding, improving D1 (71%), D3 (52%), and D7 (38%) retention rates.",
+      "Enhanced engagement systems like training centers, daily goals, and beginner quest flows to extend player lifetime value.",
+      "Worked on LiveOps events including Hitwicket Champions League, Alliance Quest, and Battle Arenas to sustain player engagement.",
     ],
   },
 ];
@@ -47,9 +50,9 @@ const Experience: React.FC = () => (
           {exp.company}, {exp.location}
         </h3>
         <p className="text-xs font-semibold my-1 opacity-50">{exp.period}</p>
-        <ul className="list-disc list-inside space-y-1 text-xs opacity-70 py-2">
-          {exp.highlights.map((point, i) => (
-            <li key={i}>{point}</li>
+        <ul className="list-disc pl-5 py-2">
+          {exp.highlights.map((highlight, i) => (
+            <li key={i} className="text-xs opacity-70 mb-1">{highlight}</li>
           ))}
         </ul>
       </div>
