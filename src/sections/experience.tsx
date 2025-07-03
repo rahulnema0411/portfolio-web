@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const experiences = [
   {
@@ -40,24 +40,102 @@ const experiences = [
   },
 ];
 
-const Experience: React.FC = () => (
-  <section id="experience" className="text-left py-8">
-    <h2 className="text-xl font-bold mb-8">Work Experience</h2>
-    {experiences.map((exp, idx) => (
-      <div key={idx} className="mb-8">
-        <span className="font-black">{exp.title}</span>
-        <h3 className="font-black text-sm">
-          {exp.company}, {exp.location}
-        </h3>
-        <p className="text-xs font-semibold my-1 opacity-50">{exp.period}</p>
-        <ul className="list-disc pl-5 py-2">
-          {exp.highlights.map((highlight, i) => (
-            <li key={i} className="text-xs opacity-70 mb-1">{highlight}</li>
-          ))}
-        </ul>
-      </div>
-    ))}
-  </section>
-);
+const Experience: React.FC = () => {
+  // Flatten all highlights into words with mapping to experience/highlight indices
+  type WordMeta = {
+    word: string;
+    expIdx: number;
+    highlightIdx: number;
+    wordIdx: number;
+  };
+
+  const words: WordMeta[] = [];
+  experiences.forEach((exp, expIdx) => {
+    exp.highlights.forEach((highlight, highlightIdx) => {
+      highlight.split(" ").forEach((word, wordIdx) => {
+        words.push({ word, expIdx, highlightIdx, wordIdx });
+      });
+    });
+  });
+
+  const wordRefs = useRef<(HTMLSpanElement | null)[]>([]);
+  const [active, setActive] = useState<boolean[]>(
+    Array(words.length).fill(false)
+  );
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const mid = window.innerHeight / 3;
+      setActive(
+        wordRefs.current.map((el) => {
+          if (!el) return false;
+          const rect = el.getBoundingClientRect();
+          return rect.top < mid;
+        })
+      );
+    };
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Helper to get the flat word index for a given expIdx, highlightIdx, wordIdx
+  const getWordFlatIdx = (() => {
+    const highlightWordCounts: number[][] = experiences.map((exp) =>
+      exp.highlights.map((h) => h.split(" ").length)
+    );
+    return (expIdx: number, highlightIdx: number, wordIdx: number) => {
+      let idx = 0;
+      for (let i = 0; i < expIdx; i++) {
+        idx += highlightWordCounts[i].reduce((a, b) => a + b, 0);
+      }
+      for (let j = 0; j < highlightIdx; j++) {
+        idx += highlightWordCounts[expIdx][j];
+      }
+      return idx + wordIdx;
+    };
+  })();
+
+  return (
+    <section id="experience" className="text-left py-8">
+      <h2 className="text-xl font-bold mb-8">Work Experience</h2>
+      {experiences.map((exp, expIdx) => (
+        <div key={expIdx} className="mb-8">
+          <span className="font-black">{exp.title}</span>
+          <h3 className="font-black text-sm">
+            {exp.company}, {exp.location}
+          </h3>
+          <p className="text-xs font-semibold my-1 opacity-50">{exp.period}</p>
+          <ul className="list-disc pl-5 py-2">
+            {exp.highlights.map((highlight, highlightIdx) => (
+              <li
+                key={highlightIdx}
+                className="text-xs mb-1 transition-colors duration-300 text-white"
+              >
+                {highlight.split(" ").map((word, wordIdx) => {
+                  const flatIdx = getWordFlatIdx(expIdx, highlightIdx, wordIdx);
+                  return (
+                    <span
+                      key={wordIdx}
+                      ref={(el) => {
+                        wordRefs.current[flatIdx] = el;
+                      }}
+                      className={`transition-colors duration-300 inline-block ${
+                        active[flatIdx] ? "text-white" : "text-white opacity-50"
+                      }`}
+                      style={{ marginRight: "0.25em" }}
+                    >
+                      {word}
+                    </span>
+                  );
+                })}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </section>
+  );
+};
 
 export default Experience;

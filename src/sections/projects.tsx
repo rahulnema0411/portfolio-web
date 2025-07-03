@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const projects = [
   {
@@ -43,49 +43,90 @@ const projects = [
   // },
 ];
 
-const Projects: React.FC = () => (
-  <section id="projects" className="text-left">
-    <h2 className="text-xl font-bold mb-8 text-left">Projects</h2>
-    <div className="space-y-10">
-      {projects.map((project, idx) => (
-        <div key={idx} className="text-left space-y-4">
-          <div className="flex flex-col">
-            <h3 className="font-black text-left">{project.title}</h3>
-          </div>
-          <div className="flex md:flex-row flex-col-reverse gap-4">
-            <div
-              className="text-left text-xs space-y-1 opacity-70 flex-1"
-              id={`desc-${idx}`}
-            >
-              {project.description}
+const Projects: React.FC = () => {
+  const wordRefs = useRef<(HTMLSpanElement | null)[][]>([]);
+  const [activeWords, setActiveWords] = useState<boolean[][]>(
+    projects.map((project) => project.description.split(" ").map(() => false))
+  );
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const mid = window.innerHeight / 3;
+      setActiveWords(
+        wordRefs.current.map((wordRow) =>
+          wordRow.map((el) => {
+            if (!el) return false;
+            const rect = el.getBoundingClientRect();
+            return rect.top < mid;
+          })
+        )
+      );
+    };
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <section id="projects" className="text-left">
+      <h2 className="text-xl font-bold mb-8 text-left">Projects</h2>
+      <div className="space-y-10">
+        {projects.map((project, idx) => (
+          <div key={idx} className="text-left space-y-4">
+            <div className="flex flex-col">
+              <h3 className="font-black text-left">{project.title}</h3>
             </div>
-            {project.image && (
-              <img
-                src={project.image}
-                alt={project.title}
-                className="mt-2 mb-2 rounded border-2 border-gray-500 shadow md:w-64 object-cover"
-                style={{
-                  height: "auto",
-                  maxHeight: "none",
-                  alignSelf: "stretch",
-                }}
-              />
-            )}
-          </div>
-          <div className="flex flex-wrap gap-2">
-            {project.tech.map((tech, i) => (
-              <span
-                key={i}
-                className="bg-white text-black rounded-full px-3 py-1 text-xs font-medium shadow border"
+            <div className="flex md:flex-row flex-col-reverse gap-4">
+              <div
+                className="text-left text-xs space-y-1 flex-1 transition-colors duration-300 flex flex-wrap"
+                id={`desc-${idx}`}
               >
-                {tech}
-              </span>
-            ))}
+                {project.description.split(" ").map((word, wIdx) => (
+                  <span
+                    key={wIdx}
+                    ref={(el) => {
+                      if (!wordRefs.current[idx]) wordRefs.current[idx] = [];
+                      wordRefs.current[idx][wIdx] = el;
+                    }}
+                    className={`transition-colors duration-300 ${
+                      activeWords[idx]?.[wIdx]
+                        ? "text-white"
+                        : "text-white opacity-50"
+                    }`}
+                    style={{ marginRight: "0.25em", whiteSpace: "pre" }}
+                  >
+                    {word}
+                  </span>
+                ))}
+              </div>
+              {project.image && (
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="mt-2 mb-2 rounded border-2 border-gray-500 shadow md:w-64 object-cover"
+                  style={{
+                    height: "auto",
+                    maxHeight: "none",
+                    alignSelf: "stretch",
+                  }}
+                />
+              )}
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {project.tech.map((tech, i) => (
+                <span
+                  key={i}
+                  className="bg-white text-black rounded-full px-3 py-1 text-xs font-medium shadow border"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
           </div>
-        </div>
-      ))}
-    </div>
-  </section>
-);
+        ))}
+      </div>
+    </section>
+  );
+};
 
 export default Projects;
