@@ -5,33 +5,63 @@ const projects = [
     title: "Factura (Web Application)",
     tech: ["NextJS", "NestJS", "PostgreSQL"],
     image:
-      "https://w8psdz103p.ufs.sh/f/hdGRfDWTOhVSBsv6BIWHUjDKPCqQOynf2xRX8T5ZgL4w07Wu", // Add your image URL here
+      "https://w8psdz103p.ufs.sh/f/hdGRfDWTOhVSBsv6BIWHUjDKPCqQOynf2xRX8T5ZgL4w07Wu",
+    highlights: [
+      "Built a NextJS front end with File-Based routing and image compression for optimized performance.",
+      "Developed a scalable NestJS + PostgreSQL backend with JWT authentication and AWS S3 for secure PDF and image uploads.",
+      "Built core modules including Enquiry, Orders, and Production, featuring a dynamic Quote Calculator and sharable enquiry forms with role-based permissions.",
+      "Integrated WhatsApp Cloud API and Amazon SES for automated real-time customer notifications.",
+      "Implemented a CI/CD pipeline for seamless build, test, and deployment workflows.",
+      "Containerized services with Docker and deployed on AWS EC2, with a live production environment.",
+      "The system delivers a reliable, scalable infrastructure supporting B2B workflows.",
+    ],
     description:
-      "A scalable B2B platform built with a Next.js frontend leveraging file-based routing and image compression for optimized performance. The backend was developed using NestJS with PostgreSQL, featuring JWT-based authentication and AWS S3 integration for secure PDF and image uploads. Core modules include Enquiry, Orders, and Production management, along with a dynamic Quote Calculator and sharable enquiry forms with role-based permission controls. The system integrates with WhatsApp Cloud API and Amazon SES to enable real-time, automated customer notifications. A CI/CD pipeline ensures seamless build, test, and deployment workflows, while services are containerized using Docker and hosted on AWS EC2 within a live production environment, delivering a reliable, scalable infrastructure.",
+      "A scalable B2B platform with Next.js and NestJS, featuring JWT auth, PostgreSQL, and AWS S3 for file uploads. Core modules include Enquiries, Orders, and Production, with real-time notifications via WhatsApp Cloud API and Amazon SES. Deployed using Docker on AWS EC2 with a CI/CD pipeline for seamless production-ready deployments.",
   },
   {
     title: "Chessmate.Club: Multiplayer",
     tech: ["Flutter", "NestJS", "MongoDB"],
     image:
       "https://w8psdz103p.ufs.sh/f/hdGRfDWTOhVSnj1zXIrfpDrG6RUhnXQ2a4C8Hqgzdx0t5cvO",
+    highlights: [
+      "Built a cross-platform real-time multiplayer chess app in Flutter using Socket.io for low-latency communication.",
+      "Integrated Firebase Auth with Google and Apple sign-in for secure, seamless authentication.",
+      "Applied BLoC and Repository pattern for scalable state management and live game synchronization.",
+      "Used Stockfish via FFI for offline AI, and integrated chess libraries for legal moves, timers, and matchmaking.",
+      "Containerized the backend with Docker and deployed on AWS EC2 for scalable, production-ready hosting.",
+    ],
     description:
-      "A cross-platform real-time multiplayer chess application built with Flutter, featuring low-latency communication using Socket.io. The app supports secure authentication via Firebase Auth, with integrated Google and Apple sign-in options. A scalable and maintainable architecture was implemented using the BLoC and Repository patterns for efficient state management and real-time game synchronization. For offline play, Stockfish was integrated via FFI, alongside chess libraries for legal move validation, timers, and player matchmaking. The backend services were containerized with Docker and deployed on AWS EC2, ensuring a scalable, production-ready infrastructure capable of supporting concurrent multiplayer sessions.",
+      "A cross-platform real-time multiplayer chess app using Flutter and Socket.io for low-latency gameplay. Integrated Firebase Auth, Google/Apple sign-in, and offline Stockfish support via FFI. Applied BLoC and Repository patterns for scalable state management. Backend containerized with Docker and hosted on AWS EC2 for a reliable, concurrent multiplayer experience.",
   },
   {
     title: "Cudddle: A Dating App",
     tech: ["Flutter", "NodeJS", "MongoDB"],
     image:
       "https://w8psdz103p.ufs.sh/f/hdGRfDWTOhVSAeq3mwX1kpT6ePmZ5J029BVLgEjnQfadbCIr",
+    highlights: [
+      "Built a scalable Flutter app using BLoC and Repository Pattern.",
+      "Developed a scalable Express + MongoDB backend with JWT-authenticated REST APIs.",
+      "Implemented real-time chat using Firebase and push notifications via Firebase Cloud Messaging.",
+      "Integrated OpenAPI-powered Wingman/Wingwoman helpers for AI-driven matchmaking assistance.",
+      "Implemented media rich features including image capture, cropping and compression for profile building.",
+    ],
     description:
-      "A scalable Flutter application designed with the BLoC and Repository patterns for clean, maintainable, and modular state management. The backend was built using Express and MongoDB, offering JWT-authenticated REST APIs for secure and scalable data handling. The platform features real-time chat powered by Firebase, with push notifications managed via Firebase Cloud Messaging to keep users connected. An AI-driven matchmaking assistant, powered by OpenAPI integrations (Wingman/Wingwoman helpers), enhances the matchmaking experience with intelligent recommendations. Additionally, the app includes media-rich features such as image capture, cropping, and compression for seamless profile building and an engaging user experience.",
+      "A dating app built with flutter with a real-time chat system (Firebase) and push notifications (FCM). Integrated JWT-auth REST APIs with an Express + MongoDB backend. Added AI-driven matchmaking via OpenAPI, media features like image capture, cropping, and compression, and applied BLoC + Repository patterns for clean, maintainable architecture.",
   },
   {
     title: "Anony: Anonymous Q&A System",
     tech: ["Flutter", "Firebase", "Apple Push Notification Service"],
     image:
       "https://w8psdz103p.ufs.sh/f/hdGRfDWTOhVSbAh5HpKOXdAZfF04JtGK7H25rsNWoCjkP1L9",
+    highlights: [
+      "Anonymous Q&A system built within a Flutter app.",
+      "Unique link generation for sharing on Instagram or with friends.",
+      "Privacy ensured by delivering questions directly to recipients.",
+      "Authentication via Google Sign-In (Firebase) for Android and Apple ID for iOS.",
+      "Push notifications using Apple Push Notification Service and Firebase Notification Service.",
+    ],
     description:
-      "An anonymous Q&A system built within a Flutter app, featuring unique link generation for users to share on Instagram or with friends, enabling them to receive anonymous questions. The system ensures privacy by delivering questions directly to the intended recipients. Authentication is handled via Google Sign-In (Firebase) for Android and Apple ID login for iOS. To keep users engaged, push notifications are integrated using Apple Push Notification Service for iOS and Firebase Notification Service for Android, notifying users instantly when new questions arrive.",
+      "An anonymous Q&A feature in a Flutter app with unique sharable links for Instagram and private message delivery. Integrated Google Sign-In (Android) and Apple ID login (iOS). Push notifications powered by Apple Push Notification Service and Firebase notify users instantly of new anonymous questions for continuous engagement.",
   },
   // {
   //   title: "Ludo Master: Multiplayer Game",
@@ -63,7 +93,7 @@ const Projects: React.FC = () => (
               <img
                 src={project.image}
                 alt={project.title}
-                className="mt-2 mb-2 rounded border-2 border-gray-500 shadow md:w-64 object-cover"
+                className="mt-2 mb-2 rounded md:w-36 object-cover"
                 style={{
                   height: "auto",
                   maxHeight: "none",
@@ -71,6 +101,13 @@ const Projects: React.FC = () => (
                 }}
               />
             )}
+          </div>
+          <div>
+            {project.highlights.map((highlight, i) => (
+              <li key={i} className="text-xs opacity-70 mb-1">
+                {highlight}
+              </li>
+            ))}
           </div>
           <div className="flex flex-wrap gap-2">
             {project.tech.map((tech, i) => (

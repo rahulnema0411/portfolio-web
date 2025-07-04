@@ -4,6 +4,7 @@ import About from "./sections/about";
 import ContactSection from "./sections/contact";
 import Experience from "./sections/experience";
 import Projects from "./sections/projects";
+import Outro from "./sections/outro";
 
 // const SECTION_IDS = ["about", "experience", "projects"];
 
@@ -91,6 +92,9 @@ function App() {
         </div>
         <div ref={projectsRef}>
           <Projects />
+        </div>
+        <div>
+          <Outro />
         </div>
       </div>
     </div>
