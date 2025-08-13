@@ -52,27 +52,27 @@ function App() {
         <div className="flex flex-col justify-items-start items-start space-y-2">
           <p className="font-black text-4xl">Rahul Nema</p>
           <p className="text-xl font-semibold">SOFTWARE ENGINEER</p>
-          <p className="text-left text-xs opacity-70 py-2">
+          <p className="text-left text-xs font-semibold opacity-70 py-2">
             I build accessible, pixel-perfect digital experiences for the web,
             mobile and I build games as well.
           </p>
         </div>
-        <ol className="hidden md:block list-disc list-inside text-left space-y-1">
+        <ol className="hidden md:block list-disc list-inside text-left font-semibold space-y-1">
           <li
-            className={activeSection === "about" ? "font-bold" : "opacity-70"}
+            className={activeSection === "about" ? "font-extrabold" : "opacity-70"}
           >
             About
           </li>
           <li
             className={
-              activeSection === "experience" ? "font-bold" : "opacity-70"
+              activeSection === "experience" ? "font-extrabold" : "opacity-70"
             }
           >
             Experience
           </li>
           <li
             className={
-              activeSection === "projects" ? "font-bold" : "opacity-70"
+              activeSection === "projects" ? "font-extrabold" : "opacity-70"
             }
           >
             Projects

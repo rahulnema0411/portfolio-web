@@ -52,7 +52,7 @@ const Experience: React.FC = () => (
         <p className="text-xs font-semibold my-1 opacity-50">{exp.period}</p>
         <ul className="list-disc pl-5 py-2">
           {exp.highlights.map((highlight, i) => (
-            <li key={i} className="text-xs opacity-70 mb-1">{highlight}</li>
+            <li key={i} className="text-xs font-semibold opacity-70 mb-1">{highlight}</li>
           ))}
         </ul>
       </div>
